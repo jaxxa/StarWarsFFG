@@ -1,7 +1,8 @@
 {
 	"Actor": {
 		"types": [
-			"character"
+			"character",
+			"vehicle"
 		],
 		"character": {
 			"biography": "",
@@ -200,6 +201,33 @@
 					"rank": 0,
 					"characteristic": "Intellect"
 				}
+			}
+		},
+		"vehicle": {
+			"stats": {
+				"description": "",
+				"silhouette": 1,
+				"speed": 0,
+				"maxSpeed": 0,
+				"handling": 0,
+				"hullTraumaThreshold": 0,
+				"systemStrainThershold": 0,
+				"shields": {
+					"fore": 0,
+					"port": 0,
+					"starboard": 0,
+					"aft": 0
+				},
+				"armour": 0,
+				"sensorRange":"Short",
+				"crew":"",
+				"passengerCapacity":0,
+				"encumbrance":0,
+				"encumbranceCapacity":8,
+				"cost":50,
+				"rarity":5,
+				"customization Hard Points":2,
+				"weapons":{}
 			}
 		}
 	},

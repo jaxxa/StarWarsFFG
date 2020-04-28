@@ -6,7 +6,7 @@
   "minimumCoreVersion": "0.5.5",
   "compatibleCoreVersion": "0.5.5",
   "author": "Jaxxa",
-  "esmodules": ["module/dice-pool-ffg.js", "module/simple.js"],
+  "esmodules": ["module/dice-pool-ffg.js", "module/swffg.js"],
   "styles": ["styles/simple.css"],
   "packs": [],
   "languages": [],
