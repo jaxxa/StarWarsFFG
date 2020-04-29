@@ -6,6 +6,7 @@
 		],
 		"character": {
 			"biography": "",
+			"attributes": {},
 			"stats": {
 				"wounds": {
 					"value": 0,
@@ -33,7 +34,6 @@
 					"max": 0
 				}
 			},
-			"attributes": {},
 			"characteristics": {
 				"Brawn": {
 					"value": 2,
@@ -204,14 +204,24 @@
 			}
 		},
 		"vehicle": {
+			"biography": "",
+			"attributes": {},
 			"stats": {
 				"description": "",
 				"silhouette": 1,
 				"speed": 0,
 				"maxSpeed": 0,
 				"handling": 0,
-				"hullTraumaThreshold": 0,
-				"systemStrainThershold": 0,
+				"hullTrauma": {
+					"value": 0,
+					"min": 0,
+					"max": 10
+				},
+				"systemStrain": {
+					"value": 0,
+					"min": 0,
+					"max": 10
+				},
 				"shields": {
 					"fore": 0,
 					"port": 0,
@@ -222,14 +232,18 @@
 				"sensorRange":"Short",
 				"crew":"",
 				"passengerCapacity":0,
-				"encumbrance":0,
-				"encumbranceCapacity":8,
+				"encumbrance": {
+					"value": 0,
+					"min": 0,
+					"max": 10
+				},
 				"cost":50,
 				"rarity":5,
-				"customization Hard Points":2,
+				"customizationHardPoints":2,
 				"weapons":{}
-			}
+			}	
 		}
+		
 	},
 	"Item": {
 		"types": [
