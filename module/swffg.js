@@ -7,8 +7,8 @@
 // Import Modules
 import { SimpleItemSheet } from "./item-sheet.js";
 import { SimpleActorSheet } from "./actor-sheet-simple.js";
-import { ActorSheetFFGVehicle } from "./ffg-actor-sheet-vehicle.js";
 import { ActorSheetFFG } from "./actor-sheet-ffg.js";
+import { ActorSheetFFGVehicle } from "./ffg-actor-sheet-vehicle.js";
 import { DicePoolFFG } from "./dice-pool-ffg.js"
 
 /* -------------------------------------------- */
