@@ -10,7 +10,7 @@ export class ActorSheetFFG extends ActorSheet {
 	  return mergeObject(super.defaultOptions, {
   	  classes: ["worldbuilding", "sheet", "actor"],
   	  template: "systems/starwarsffg/templates/ffg-actor-sheet.html",
-      width: 600,
+      width: 880,
       height: 600,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "characteristics"}]
     });
@@ -29,6 +29,44 @@ export class ActorSheetFFG extends ActorSheet {
   }
 
   /* -------------------------------------------- */
+
+  /** @override */
+  async _render(force = false, options = {}) {
+    await this._onSubmit;
+    this._saveScrollPos(); // Save scroll positions
+    await super._render(force, options);
+    this._setScrollPos(); // Save scroll positions
+  }
+  
+  
+  _saveScrollPos()
+  {
+    if (this.form === null)
+      return;
+
+    const html = this._element;
+    if (!html) return
+    this.scrollPos = [];
+    let lists = $(html.find(".save-scroll"));
+    for (let list of lists)
+    {
+      this.scrollPos.push($(list).scrollTop());
+    }
+  }
+  _setScrollPos()
+  {
+    if (this.scrollPos)
+    {
+      const html = this._element;
+      let lists = $(html.find(".save-scroll"));
+      for (let i = 0; i < lists.length; i++)
+      {
+        $(lists[i]).scrollTop(this.scrollPos[i]);
+      }
+    }
+  }
+
+
 
   /** @override */
 	activateListeners(html) {
@@ -77,6 +115,15 @@ export class ActorSheetFFG extends ActorSheet {
 
     // Add or Remove Attribute
     html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
+
+    //Select all text in resources as well as rank input boxes
+    $("div.resource").find("input").on("click",function(){
+      this.select()
+    })
+
+    $("td.tdCenter").find("input").on("click",function(){
+      this.select()
+    })
   }
 
   /* -------------------------------------------- */
@@ -213,3 +260,4 @@ export class ActorSheetFFG extends ActorSheet {
     dicePool.renderPreview(rollButton)
   }
 }
+

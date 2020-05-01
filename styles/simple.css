@@ -1,3 +1,17 @@
+.cflexrow{
+    flex-wrap: wrap;
+    max-height: 150px;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.soak{
+    height: 44px;
+    width: 230px;
+}
+
 .worldbuilding.sheet .window-content {
     padding: 5px;
     overflow-y: hidden;
@@ -14,15 +28,20 @@
     margin-bottom: 10px;
 }
 
+.worldbuilding.sheet.actor{
+    min-width: 650px;
+    max-width: 1090px;
+}
+
 .worldbuilding.sheet .profile-img {
     flex: 0 0 100px;
-    height: 100px;
+    height: 150px;
     margin-right: 10px;
 }
 
 .worldbuilding.sheet .header-fields {
-    flex: 1;
-    height: 10em;
+    flex: 2;
+    height: auto;
 }
 
 .worldbuilding.sheet .charname {
@@ -38,13 +57,12 @@
 }
 
 .worldbuilding.sheet .resource {
-    height: 40px;
-    width: 50%;
-    padding: 3px 10px;
-    float: left;
+    flex-grow: 1;
+    flex-shrink: 3;
+    margin-top: 5px;
+    margin-right: 1px;
 }
 .worldbuilding.sheet .resource input {
-    width: 100px;
     height: 28px;
 }
 
@@ -67,9 +85,10 @@
 
 /* Content Tabs */
 .worldbuilding.sheet .sheet-body {
-    height: calc(100% - 14em);
+    height: calc(100% - 19.2em);
     overflow: auto;
 }
+
 .worldbuilding.sheet .sheet-body .tab {
     height: 100%;
 }
@@ -77,6 +96,7 @@
     width: 100%;
     height: 100%;
 }
+
 
 /*
 This seems to be necessary to make scrolling inside the actor
@@ -133,6 +153,11 @@ sheet work. There is likely a better way to do this.
     padding: 0;
 }
 
+.skill:nth-child(even){
+    background: rgba(166, 166, 155, 0.62);
+}
+
+
 .worldbuilding.sheet .attributes-list li > * {
     margin: 0 3px;
     height: 28px;
@@ -182,7 +207,7 @@ boxes at the top of the standard FFG character sheets.
 .split-box {
     border: 2px solid black;
     border-radius: 15px;
-    width: max-content;
+    width: 230px;
 }
 
 .split-box .divider {
@@ -192,6 +217,15 @@ boxes at the top of the standard FFG character sheets.
 
 .split-box > .content {
     display: flex;
+}
+
+.split-box .center{
+    width: 100%;
+}
+
+.split-box .center input{
+    font-size: 180%;
+    padding-top: 5px;
 }
 
 .split-box h1 {
@@ -213,8 +247,40 @@ boxes at the top of the standard FFG character sheets.
     text-align: center;
 }
 
+.characteristicsTable th{
+    position: sticky;
+    top: 0;
+    background: grey;
+    box-shadow: 0 -2px 0px 0px grey;
+    z-index: 999999;
+}
+
+.tdCenter{
+    text-align: center;
+    max-width: 120px;
+}
+
+.tdCenter input{
+    text-align: center;
+}
+
+
+.rollTd{
+    width: 288px;
+}
+
 .dice-pool img {
     border: 0;
     width: 2em;
     height: 2em;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }
