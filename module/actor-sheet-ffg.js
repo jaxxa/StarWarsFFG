@@ -3,8 +3,6 @@
  * @extends {ActorSheet}
  */
 export class ActorSheetFFG extends ActorSheet {
-  pools = new Map();
-
   /** @override */
 	static get defaultOptions() {
 	  return mergeObject(super.defaultOptions, {
@@ -160,10 +158,10 @@ export class ActorSheetFFG extends ActorSheet {
       dicePool.upgradeDifficulty()
     }
 
-    await this._completeRoll(dicePool, `Rolling ${skillName}`);
+    await this._completeRoll(dicePool, `Rolling ${skillName}`, skillName);
   }
 
-  async _completeRoll(dicePool, description) {
+  async _completeRoll(dicePool, windowTitle, chatDescription) {
     const id = randomID();
 
     const content = await renderTemplate("systems/starwarsffg/templates/roll-options.html", {
@@ -172,7 +170,7 @@ export class ActorSheetFFG extends ActorSheet {
     });
 
     new Dialog({
-      title: description || "Finalize your roll",
+      title: windowTitle || "Finalize your roll",
       content,
       buttons: {
         one: {
@@ -181,11 +179,14 @@ export class ActorSheetFFG extends ActorSheet {
           callback: () => {
             const container = document.getElementById(id);
             const finalPool = DicePoolFFG.fromContainer(container);
+            const content = game.specialDiceRoller.starWars.rollFormula(
+              finalPool.renderDiceExpression(), chatDescription,
+            );
 
             ChatMessage.create({
               user: game.user._id,
               speaker: this.getData(),
-              content: `/sw ${finalPool.renderDiceExpression()}`
+              content,
             });
           }
         },
@@ -199,7 +200,6 @@ export class ActorSheetFFG extends ActorSheet {
 
   _addSkillDicePool(elem) {
     const data = this.getData();
-    console.log(elem);
     const skillName = elem.dataset["ability"];
     const skill = data.data.skills[skillName];
     const characteristic = data.data.characteristics[skill.characteristic];
