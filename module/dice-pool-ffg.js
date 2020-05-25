@@ -35,15 +35,26 @@ export class DicePoolFFG {
         if (times === undefined) {
             times = 1;
         }
-        for (let i = 0; i < times; i++) {
-            if (this.ability > 0) {
-                this.ability--;
-                this.proficiency++;
-            } else {
-                this.ability++;
-            }
-        }
+        const straightUpgrade = Math.min(times, this.ability);
+        this.ability -= straightUpgrade - ((times - straightUpgrade) % 2);
+        this.proficiency += straightUpgrade + Math.floor((times - straightUpgrade) / 2);
     }
+
+    /**
+     * Downgrade the dice pool. This converts proficiency dice into ability dice.
+     * If there are no remaining proficiency dice left over with downgrades left,
+     * the process will halt.
+     * @param times the number of times to perform this operation, defaults to 1
+     */
+    downgrade(times) {
+        if (times === undefined) {
+            times = 1;
+        }
+        const downgrades = Math.min(times, this.proficiency);
+        this.ability += downgrades;
+        this.proficiency -= downgrades;
+    }
+
     /**
      * Upgrade the dice pool's difficulty, converting any remaining difficulty dice
      * into challenge dice or adding an difficulty die if none remain.
@@ -53,14 +64,24 @@ export class DicePoolFFG {
         if (times === undefined) {
             times = 1;
         }
-        for (let i = 0; i < times; i++) {
-            if (this.difficulty > 0) {
-                this.difficulty--;
-                this.challenge++;
-            } else {
-                this.difficulty++;
-            }
+        const straightUpgrade = Math.min(times, this.difficulty);
+        this.difficulty -= straightUpgrade - ((times - straightUpgrade) % 2);
+        this.challenge += straightUpgrade + Math.floor((times - straightUpgrade) / 2);
+    }
+
+    /**
+     * Downgrade the dice pool's difficulty. This converts challenge dice into difficulty dice.
+     * If there are no remaining challenge dice left over with downgrades left,
+     * the process will halt.
+     * @param times the number of times to perform this operation, defaults to 1
+     */
+    downgradeDifficulty(times) {
+        if (times === undefined) {
+            times = 1;
         }
+        const downgrades = Math.min(times, this.challenge);
+        this.difficulty += downgrades;
+        this.challenge -= downgrades;
     }
 
     /**
