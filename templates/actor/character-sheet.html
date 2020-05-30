@@ -1,0 +1,283 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+      <div class="secondary">
+        <div class="row">
+          <div>Species:</div>
+          <div><input name="data.species" type="text" value="{{data.species}}" placeholder="Species"/></div>
+        </div>
+        <div class="row">
+          <div>Career:</div>
+          <div><input name="data.career" type="text" value="{{data.career}}" placeholder="Career"/></div>
+        </div>
+        <div class="row">
+          <div>Specializations: </div>
+          <div><input name="data.specializations" type="text" value="{{data.specializations}}" placeholder="Specializations"/></div>
+        </div>
+      </div>
+    </div>
+    <div class="attributes">
+      <div class="grid grid-4col">
+        <div class="attribute flex-group-center">
+          <div class="block-title">{{localize "SWFFG.AttributeSoak" }}</div>
+          <div class="block-value"><input type="text" name="data.attributes.soak" value="{{data.attributes.soak}}" data-dtype="Number"/></div>
+        </div>
+        <div class="attribute flex-group-center">
+          <div class="block-title">{{localize "SWFFG.AttributeWounds" }}</div>
+          <div class="grid grid-2col">
+            <div class="block-value"><input type="text" name="data.attributes.wounds.max" value="{{data.attributes.wounds.max}}" data-dtype="Number"/></div>
+            <div class="block-value"><input type="text" name="data.attributes.wounds.current" value="{{data.attributes.wounds.current}}" data-dtype="Number"/></div>
+          </div>
+        </div>
+        <div class="attribute flex-group-center">
+          <div class="block-title">{{localize "SWFFG.AttributeStrain" }}</div>
+          <div class="grid grid-2col">
+            <div class="block-value"><input type="text" name="data.attributes.strain.max" value="{{data.attributes.strain.max}}" data-dtype="Number"/></div>
+            <div class="block-value"><input type="text" name="data.attributes.strain.current" value="{{data.attributes.strain.current}}" data-dtype="Number"/></div>
+          </div>
+        </div>
+        <div class="attribute flex-group-center">
+          <div class="block-title">{{localize "SWFFG.AttributeDefense" }}</div>
+          <div class="grid grid-2col">
+            <div class="block-value"><input type="text" name="data.attributes.defense.ranged" value="{{data.attributes.defense.ranged}}" data-dtype="Number"/></div>
+            <div class="block-value"><input type="text" name="data.attributes.defense.melee" value="{{data.attributes.defense.melee}}" data-dtype="Number"/></div>
+          </div>
+        </div>
+      </div>
+      <div class="attributes-shadow grid grid-4col">
+        <div class="attribute flex-group-center">
+          
+        </div>
+        <div class="attribute flex-group-center">
+          <div class="shadow-left">
+            <div class="shadow-text">threshold</div>
+          </div>
+          <div class="shadow-right">
+            <div class="shadow-text">current</div>
+          </div>
+        </div>
+        <div class="attribute flex-group-center">
+          <div class="shadow-left">
+            <div class="shadow-text">threshold</div>
+          </div>
+          <div class="shadow-right">
+            <div class="shadow-text">current</div>
+          </div>
+        </div>
+        <div class="attribute flex-group-center">
+          <div class="shadow-left">
+            <div class="shadow-text">ranged</div>
+          </div>
+          <div class="shadow-right">
+            <div class="shadow-text">melee</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+      <a class="item" data-tab="description">{{localize "SWFFG.TabsDescription" }}</a>
+      <a class="item" data-tab="characteristics">{{localize "SWFFG.TabsCharacteristics" }}</a>
+      <a class="item" data-tab="items">{{localize "SWFFG.TabsItems" }}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    <div class="tab characteristics" data-group="primary" data-tab="characteristics">
+      <div class="grid grid-6col">
+        <div class="characteristic-item flex-group-center">
+          <div class="characteristic">
+            <div class="characteristic-value">
+              <input type="text" name="data.characteristics.brawn.value" value="{{data.characteristics.brawn.value}}" data-dtype="Number"/>
+            </div>
+            <div class="characteristic-label">
+              {{localize "SWFFG.CharacteristicBrawn" }}
+            </div>
+          </div>
+        </div>
+        <div class="characteristic-item flex-group-center">
+          <div class="characteristic">
+            <div class="characteristic-value">
+              <input type="text" name="data.characteristics.agility.value" value="{{data.characteristics.agility.value}}" data-dtype="Number"/>
+            </div>
+            <div class="characteristic-label">
+              {{localize "SWFFG.CharacteristicAgility" }}
+            </div>
+          </div>
+        </div>
+        <div class="characteristic-item flex-group-center">
+          <div class="characteristic">
+            <div class="characteristic-value">
+              <input type="text" name="data.characteristics.intellect.value" value="{{data.characteristics.intellect.value}}" data-dtype="Number"/>
+            </div>
+            <div class="characteristic-label">
+              {{localize "SWFFG.CharacteristicIntellect" }}
+            </div>
+          </div>
+        </div>
+        <div class="characteristic-item flex-group-center">
+          <div class="characteristic">
+            <div class="characteristic-value">
+              <input type="text" name="data.characteristics.cunning.value" value="{{data.characteristics.cunning.value}}" data-dtype="Number"/>
+            </div>
+            <div class="characteristic-label">
+              {{localize "SWFFG.CharacteristicCunning" }}
+            </div>
+          </div>
+        </div>
+        <div class="characteristic-item flex-group-center">
+          <div class="characteristic">
+            <div class="characteristic-value">
+              <input type="text" name="data.characteristics.willpower.value" value="{{data.characteristics.willpower.value}}" data-dtype="Number"/>
+            </div>
+            <div class="characteristic-label">
+              {{localize "SWFFG.CharacteristicWillpower" }}
+            </div>
+          </div>
+        </div>
+        <div class="characteristic-item flex-group-center">
+          <div class="characteristic">
+            <div class="characteristic-value">
+              <input type="text" name="data.characteristics.presence.value" value="{{data.characteristics.presence.value}}" data-dtype="Number"/>
+            </div>
+            <div class="characteristic-label">
+              {{localize "SWFFG.CharacteristicPresence" }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-2col">
+        <div class="skill-list">
+          <table>
+            <thead>
+                <tr>
+                  <th>{{localize "SWFFG.SkillsGeneral" }} Skills</th>
+                  <th>{{localize "SWFFG.SkillsCareer"}}</th>
+                  <th>{{localize "SWFFG.SkillsRank"}}</th>
+                  <th>{{localize "SWFFG.SkillsDicePool"}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each data.skills.general as |skill sid|}}
+                <tr data-ability="{{sid}}" data-category="general" class="skill">
+                  <td>{{skill.label}}</td>
+                  <td>
+                    <label class="attribute-value checkbox"><input type="checkbox" name="data.skills.general.{{sid}}.career" {{checked skill.career}}/></label>
+                  </td>
+                  <td>
+                    <input name="data.skills.general.{{sid}}.rank" value="{{skill.rank}}" type="number" min="0" max="5"
+                        data-dtype="Number" placeholder="0" />
+                  </td>
+                  <td>
+                    <div class="roll-button dice-pool"></div>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+          </table>
+        </div>
+        <div class="skill-list">
+          <table>
+            <thead>
+                <tr>
+                  <th>{{localize "SWFFG.SkillsCombat" }} Skills</th>
+                  <th>{{localize "SWFFG.SkillsCareer"}}</th>
+                  <th>{{localize "SWFFG.SkillsRank"}}</th>
+                  <th>{{localize "SWFFG.SkillsDicePool"}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each data.skills.combat as |skill sid|}}
+                <tr data-ability="{{sid}}" data-category="combat" class="skill">
+                  <td>{{skill.label}}</td>
+                  <td>
+                    <label class="attribute-value checkbox"><input type="checkbox" name="data.skills.combat.{{sid}}.career" {{checked skill.career}}/></label>
+                  </td>
+                  <td>
+                    <input name="data.skills.combat.{{sid}}.rank" value="{{skill.rank}}" type="number" min="0" max="5"
+                        data-dtype="Number" placeholder="0" />
+                  </td>
+                  <td>
+                    <div class="roll-button dice-pool"></div>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+          </table>
+          <table>
+            <thead>
+                <tr>
+                  <th>{{localize "SWFFG.SkillsSocial" }} Skills</th>
+                  <th>{{localize "SWFFG.SkillsCareer"}}</th>
+                  <th>{{localize "SWFFG.SkillsRank"}}</th>
+                  <th>{{localize "SWFFG.SkillsDicePool"}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each data.skills.social as |skill sid|}}
+                <tr data-ability="{{sid}}" data-category="social" class="skill">
+                  <td>{{skill.label}}</td>
+                  <td>
+                    <label class="attribute-value checkbox"><input type="checkbox" name="data.skills.social.{{sid}}.career" {{checked skill.career}}/></label>
+                  </td>
+                  <td>
+                    <input name="data.skills.social.{{sid}}.rank" value="{{skill.rank}}" type="number" min="0" max="5"
+                        data-dtype="Number" placeholder="0" />
+                  </td>
+                  <td>
+                    <div class="roll-button dice-pool"></div>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+          </table>
+          <table>
+            <thead>
+                <tr>
+                  <th>{{localize "SWFFG.SkillsKnowledge" }} Skills</th>
+                  <th>{{localize "SWFFG.SkillsCareer"}}</th>
+                  <th>{{localize "SWFFG.SkillsRank"}}</th>
+                  <th>{{localize "SWFFG.SkillsDicePool"}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each data.skills.knowledge as |skill sid|}}
+                <tr data-ability="{{sid}}" data-category="knowledge" class="skill">
+                  <td>{{skill.label}}</td>
+                  <td>
+                    <label class="attribute-value checkbox"><input type="checkbox" name="data.skills.knowledge.{{sid}}.career" {{checked skill.career}}/></label>
+                  </td>
+                  <td>
+                    <input name="data.skills.knowledge.{{sid}}.rank" value="{{skill.rank}}" type="number" min="0" max="5"
+                        data-dtype="Number" placeholder="0" />
+                  </td>
+                  <td>
+                    <div class="roll-button dice-pool"></div>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="tab biography" data-group="primary" data-tab="description">
+    </div>
+
+    <div class="tab items" data-group="primary" data-tab="items">
+    </div>
+
+  </section>
+
+
+</form>

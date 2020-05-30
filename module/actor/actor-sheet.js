@@ -2,17 +2,16 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class ActorSheetFFG extends ActorSheet {
-  pools = new Map();
+export class swffgActorSheet extends ActorSheet {
 
   /** @override */
-	static get defaultOptions() {
-	  return mergeObject(super.defaultOptions, {
-  	  classes: ["worldbuilding", "sheet", "actor"],
-  	  template: "systems/starwarsffg/templates/ffg-actor-sheet.html",
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ["starwars-ffg", "sheet", "actor"],
+      template: "systems/starwars-ffg/templates/actor/character-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "characteristics"}]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
 
@@ -21,29 +20,29 @@ export class ActorSheetFFG extends ActorSheet {
   /** @override */
   getData() {
     const data = super.getData();
-    data.dtypes = ["String", "Number", "Boolean"];
-    for ( let attr of Object.values(data.data.attributes) ) {
-      attr.isCheckbox = attr.dtype === "Boolean";
+    
+    // add labels for localization
+    
+    for (let category of Object.keys(data.data.skills)) {
+      for (let skill of Object.keys(data.data.skills[category])) {
+        const strId = `SWFFG.Skill${this._capitalize(skill)}`;
+        const localizedField = game.i18n.localize(strId);
+        data.data.skills[category][skill].label = localizedField;
+      }
     }
+    
     return data;
   }
 
-  /* -------------------------------------------- */
-
   /** @override */
-	activateListeners(html) {
+  activateListeners(html) {
     super.activateListeners(html);
-
-    // Activate tabs
-    let tabs = html.find('.tabs');
-    let initial = this._sheetTab;
-    new Tabs(tabs, {
-      initial: initial,
-      callback: clicked => this._sheetTab = clicked.data("tab")
-    });
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
+
+    // Add Inventory Item
+    html.find('.item-create').click(this._onItemCreate.bind(this));
 
     // Update Inventory Item
     html.find('.item-edit').click(ev => {
@@ -74,78 +73,47 @@ export class ActorSheetFFG extends ActorSheet {
       }
       await this._rollSkill(event, upgradeType);
     });
-
-    // Add or Remove Attribute
-    html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this));
   }
 
   /* -------------------------------------------- */
 
   /**
-   * Listen for click events on an attribute control to modify the composition of attributes in the sheet
-   * @param {MouseEvent} event    The originating left click event
+   * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
+   * @param {Event} event   The originating click event
    * @private
    */
-  async _onClickAttributeControl(event) {
+  _onItemCreate(event) {
     event.preventDefault();
-    const a = event.currentTarget;
-    const action = a.dataset.action;
-    const attrs = this.object.data.data.attributes;
-    const form = this.form;
+    const header = event.currentTarget;
+    // Get the type of item to create.
+    const type = header.dataset.type;
+    // Grab any data associated with this control.
+    const data = duplicate(header.dataset);
+    // Initialize a default name.
+    const name = `New ${type.capitalize()}`;
+    // Prepare the item object.
+    const itemData = {
+      name: name,
+      type: type,
+      data: data
+    };
+    // Remove the type from the dataset since it's in the itemData.type prop.
+    delete itemData.data["type"];
 
-    // Add new attribute
-    if ( action === "create" ) {
-      const nk = Object.keys(attrs).length + 1;
-      let newKey = document.createElement("div");
-      newKey.innerHTML = `<input type="text" name="data.attributes.attr${nk}.key" value="attr${nk}"/>`;
-      newKey = newKey.children[0];
-      form.appendChild(newKey);
-      await this._onSubmit(event);
-    }
-
-    // Remove existing attribute
-    else if ( action === "delete" ) {
-      const li = a.closest(".attribute");
-      li.parentElement.removeChild(li);
-      await this._onSubmit(event);
-    }
+    // Finally, create the item!
+    return this.actor.createOwnedItem(itemData);
   }
-
-  /* -------------------------------------------- */
-
-  /** @override */
-  _updateObject(event, formData) {
-
-    // Handle the free-form attributes list
-    const formAttrs = expandObject(formData).data.attributes || {};
-    const attributes = Object.values(formAttrs).reduce((obj, v) => {
-      let k = v["key"].trim();
-      if ( /[\s\.]/.test(k) )  return ui.notifications.error("Attribute keys may not contain spaces or periods");
-      delete v["key"];
-      obj[k] = v;
-      return obj;
-    }, {});
-
-    // Remove attributes which are no longer used
-    for ( let k of Object.keys(this.object.data.data.attributes) ) {
-      if ( !attributes.hasOwnProperty(k) ) attributes[`-=${k}`] = null;
-    }
-
-    // Re-combine formData
-    formData = Object.entries(formData).filter(e => !e[0].startsWith("data.attributes")).reduce((obj, e) => {
-      obj[e[0]] = e[1];
-      return obj;
-    }, {_id: this.object._id, "data.attributes": attributes});
-
-    // Update the Actor
-    return this.object.update(formData);
-  }
-
+  
+  /**
+   * @param {Event} event   The originating click event
+   * @param  {String} upgradeType   Type of dice pool upgrade
+   */
   async _rollSkill(event, upgradeType) {
     const data = this.getData();
     const row = event.target.parentElement.parentElement;
     const skillName = row.parentElement.dataset["ability"];
-    const skill = data.data.skills[skillName];
+    const skillCategory = row.parentElement.dataset["category"];
+    const skill = data.data.skills[skillCategory][skillName];
     const characteristic = data.data.characteristics[skill.characteristic];
 
     const dicePool = new DicePoolFFG({
@@ -163,10 +131,14 @@ export class ActorSheetFFG extends ActorSheet {
     await this._completeRoll(dicePool, `Rolling ${skillName}`);
   }
 
+  /**
+   * @param  {Object} dicePool    Assembled dice pool
+   * @param  {String} description   Roll description
+   */
   async _completeRoll(dicePool, description) {
     const id = randomID();
 
-    const content = await renderTemplate("systems/starwarsffg/templates/roll-options.html", {
+    const content = await renderTemplate("systems/starwars-ffg/templates/dice/roll-options.html", {
       dicePool,
       id,
     });
@@ -197,19 +169,27 @@ export class ActorSheetFFG extends ActorSheet {
     }).render(true)
   }
 
+  /**
+   * @param  {Object} elem    DOM object to place dice pool image
+   */
   _addSkillDicePool(elem) {
     const data = this.getData();
-    console.log(elem);
     const skillName = elem.dataset["ability"];
-    const skill = data.data.skills[skillName];
+    const skillCategory = elem.dataset["category"];
+    const skill = data.data.skills[skillCategory][skillName];
     const characteristic = data.data.characteristics[skill.characteristic];
-
     const dicePool = new DicePoolFFG({
-      ability: Math.max(characteristic.value, skill.value),
+      ability: Math.max(characteristic.value, skill.rank),
     });
-    dicePool.upgrade(Math.min(characteristic.value, skill.value));
+    dicePool.upgrade(Math.min(characteristic.value, skill.rank));
 
     const rollButton = elem.querySelector(".roll-button");
     dicePool.renderPreview(rollButton)
+  }
+
+
+  _capitalize(s) {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
   }
 }

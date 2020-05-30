@@ -1,217 +1,263 @@
 {
-	"Actor": {
-		"types": [
-			"character"
-		],
-		"character": {
-			"biography": "",
-			"stats": {
-				"wounds": {
-					"value": 0,
-					"min": 0,
-					"max": 10
-				},
-				"strain": {
-					"value": 0,
-					"min": 0,
-					"max": 10
-				},
-				"soak": {
-					"value": 2
-				},
-				"defence": {
-					"ranged": 0,
-					"melee": 0
-				},
-				"encumbrance": {
-					"value": 0,
-					"max": 0
-				},
-				"forcePool": {
-					"value": 0,
-					"max": 0
-				}
-			},
-			"attributes": {},
-			"characteristics": {
-				"Brawn": {
-					"value": 2,
-					"label": "Brawn"
-				},
-				"Agility": {
-					"value": 2,
-					"label": "Agility"
-				},
-				"Intellect": {
-					"value": 2,
-					"label": "Intellect"
-				},
-				"Cunning": {
-					"value": 2,
-					"label": "Cunning"
-				},
-				"Willpower": {
-					"value": 2,
-					"label": "Willpower"
-				},
-				"Presence": {
-					"value": 2,
-					"label": "Presence"
-				}
-			},
-			"skills": {
-				"Brawl": {
-					"rank": 0,
-					"characteristic": "Brawn"
-				},
-				"Gunnery": {
-					"rank": 0,
-					"characteristic": "Agility"
-				},
-				"Lightsaber": {
-					"rank": 0,
-					"characteristic": "Brawn"
-				},
-				"Melee": {
-					"rank": 0,
-					"characteristic": "Brawn"
-				},
-				"Ranged: Light": {
-					"rank": 0,
-					"characteristic": "Agility"
-				},
-				"Ranged: Heavy": {
-					"rank": 0,
-					"characteristic": "Agility"
-				},
-				"Astrogation": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Athletics ": {
-					"rank": 0,
-					"characteristic": "Brawn"
-				},
-				"Charm": {
-					"rank": 0,
-					"characteristic": "Presence"
-				},
-				"Coercion": {
-					"rank": 0,
-					"characteristic": "Willpower"
-				},
-				"Computers": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Cool": {
-					"rank": 0,
-					"characteristic": "Presence"
-				},
-				"Coordination": {
-					"rank": 0,
-					"characteristic": "Agility"
-				},
-				"Deception": {
-					"rank": 0,
-					"characteristic": "Cunning"
-				},
-				"Discipline": {
-					"rank": 0,
-					"characteristic": "Willpower"
-				},
-				"Leadership": {
-					"rank": 0,
-					"characteristic": "Presence"
-				},
-				"Mechanics": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Medicine": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Negotiation": {
-					"rank": 0,
-					"characteristic": "Presence"
-				},
-				"Perception": {
-					"rank": 0,
-					"characteristic": "Cunning"
-				},
-				"Piloting: Planetary": {
-					"rank": 0,
-					"characteristic": "Agility"
-				},
-				"Piloting: Space": {
-					"rank": 0,
-					"characteristic": "Agility"
-				},
-				"Resilience": {
-					"rank": 0,
-					"characteristic": "Brawn"
-				},
-				"Skulduggery": {
-					"rank": 0,
-					"characteristic": "Cunning"
-				},
-				"Stealth": {
-					"rank": 0,
-					"characteristic": "Agility"
-				},
-				"Streetwise": {
-					"rank": 0,
-					"characteristic": "Cunning"
-				},
-				"Survival": {
-					"rank": 0,
-					"characteristic": "Cunning"
-				},
-				"Vigilance": {
-					"rank": 0,
-					"characteristic": "Willpower"
-				},
-				"Knowledge: Core Worlds": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Knowledge: Education": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Knowledge: Lore": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Knowledge: Outer Rim": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Knowledge: Underworld": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Knowledge: Warfare": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				},
-				"Knowledge: Xenology": {
-					"rank": 0,
-					"characteristic": "Intellect"
-				}
-			}
-		}
-	},
-	"Item": {
-		"types": [
-			"item"
-		],
-		"item": {
-			"description": "",
-			"quantity": 1,
-			"weight": 0,
-			"attributes": {}
-		}
-	}
+  "Actor": {
+    "types": ["character"],
+    "templates": {
+      "base" : {
+        "characteristics" : {
+          "brawn": {
+						"value": 2
+					},
+					"agility": {
+						"value": 2
+					},
+					"intellect": {
+						"value": 2
+					},
+					"cunning": {
+						"value": 2
+					},
+					"willpower": {
+						"value": 2
+					},
+					"presence": {
+						"value": 2
+					}
+        },
+        "description" : {
+          "gender" : "",
+          "age": "",
+          "height" : "",
+          "build" : "",
+          "hair" : "",
+          "eyes" : "",
+          "features" : ""
+        },
+        "attributes" : {
+          "defense" : {
+            "melee": 0,
+            "ranged" : 0
+          },
+          "soak" : 0,
+          "strain" : {
+            "max" : 0,
+            "current": 0
+          },
+          "wounds" : {
+            "max" : 0,
+            "current": 0
+          }
+        },
+        "skills": {
+					"general" : {
+						"astrogation" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"athletics" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "brawn"
+						},
+						"computers" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"cool" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "presence"
+						},
+						"coordination" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "agility"
+						},
+						"cybernetics" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"discipline" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "willpower"
+						},
+						"mechanics" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"medicine" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"perception" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "cunning"
+						},
+						"piloting_planetary" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "agility"
+						},
+						"piloting_space" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "agility"
+						},
+						"resilience" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "brawn"
+						},
+						"skulduggery" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "cunning"
+						},
+						"stealth" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "agility"
+						},
+						"streetwise" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "cunning"
+						},
+						"survival" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "cunning"
+						},
+						"vigilance" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "willpower"
+						}
+					},
+					"combat" : {
+						"brawl" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "brawn"
+						},
+						"gunnery" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "agility"
+						},
+						"lightsaber" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "brawn"
+						},
+						"melee" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "brawn"
+						},
+						"ranged-heavy" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "agility"
+						},
+						"ranged-light" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "agility"
+						}
+					},
+					"social" : {
+						"charm" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "presence"
+						},
+						"coercion" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "willpower"
+						},
+						"deception" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "cunning"
+						},
+						"leadership" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "presence"
+						},
+						"negotiation" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "presence"
+						}
+					},
+					"knowledge": {
+						"core-worlds" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"education" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"lore" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"outer-rim" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"underworld" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"warfare" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						},
+						"xenology" : {
+							"rank" : 0,
+							"career": false,
+							"characteristic": "intellect"
+						}
+					}
+        },
+        "species" : "",
+        "career" : "",
+        "specializations": ""
+      }
+    },
+    "character": {
+      "templates": ["base"],
+      "biography": ""
+    }
+  },
+  "Item": {
+    "types": ["item"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "item": {
+      "templates": ["base"],
+      "quantity": 1,
+      "weight": 0
+    }
+  }
 }
