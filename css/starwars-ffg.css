@@ -466,6 +466,7 @@
 .starwars-ffg .biography .box-section .box-content {
   background-color: white;
   padding: 0 5px;
+  position: relative;
   --notchSize: 9px;
   -webkit-clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
   clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
@@ -484,7 +485,7 @@
 
 .starwars-ffg .biography .box-section .box-content .row .row-input input {
   border: 0;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .starwars-ffg .biography .box-section .box-content .row .row-input input:focus {
