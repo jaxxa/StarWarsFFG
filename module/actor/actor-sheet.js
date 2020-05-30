@@ -128,7 +128,7 @@ export class swffgActorSheet extends ActorSheet {
       dicePool.upgradeDifficulty()
     }
 
-    await this._completeRoll(dicePool, `Rolling ${skill.label}`, skill.label);
+    await this._completeRoll(dicePool, `${game.i18n.localize("SWFFG.DiceWindowTitle")} ${skill.label}`, skill.label);
   }
 
   /**
@@ -145,12 +145,12 @@ export class swffgActorSheet extends ActorSheet {
     });
 
     new Dialog({
-      title: windowTitle || "Finalize your roll",
+      title: windowTitle || game.i18n.localize("SWFFG.DiceDefaultWindowTitle"),
       content,
       buttons: {
         one: {
           icon: '<i class="fas fa-check"></i>',
-          label: "Roll",
+          label: game.i18n.localize("SWFFG.DiceWindowRoll"),
           callback: () => {
             const container = document.getElementById(id);
             const finalPool = DicePoolFFG.fromContainer(container);
@@ -167,7 +167,7 @@ export class swffgActorSheet extends ActorSheet {
         },
         two: {
           icon: '<i class="fas fa-times"></i>',
-          label: "Cancel",
+          label: game.i18n.localize("SWFFG.DiceWindowCancel"),
         }
       },
     }).render(true)

@@ -63,5 +63,16 @@
   "SWFFG.SkillOuter-rim": "Outer Rim",
   "SWFFG.SkillUnderworld": "Underworld",
   "SWFFG.SkillWarfare": "Warfare",
-  "SWFFG.SkillXenology": "Xenology"
+  "SWFFG.SkillXenology": "Xenology",
+  "SWFFG.DiceAbility" : "Ability",
+  "SWFFG.DiceProficiency" : "Proficiency",
+  "SWFFG.DiceDifficulty" : "Difficulty",
+  "SWFFG.DiceChallenge" : "Challenge",
+  "SWFFG.DiceBoost" : "Boost",
+  "SWFFG.DiceSetback" : "Setback",
+  "SWFFG.DiceForce" : "Force",
+  "SWFFG.DiceWindowRoll" : "Roll",
+  "SWFFG.DiceWindowCancel" : "Cancel",
+  "SWFFG.DiceWindowTitle" : "Rolling",
+  "SWFFG.DiceDefaultWindowTitle" : "Finalize your roll"
 }
