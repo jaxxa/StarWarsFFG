@@ -22,7 +22,6 @@ export class swffgActorSheet extends ActorSheet {
     const data = super.getData();
     
     // add labels for localization
-    
     for (let category of Object.keys(data.data.skills)) {
       for (let skill of Object.keys(data.data.skills[category])) {
         const strId = `SWFFG.Skill${this._capitalize(skill)}`;
@@ -30,8 +29,30 @@ export class swffgActorSheet extends ActorSheet {
         data.data.skills[category][skill].label = localizedField;
       }
     }
+
+    if (this.actor.data.type === 'character') {
+
+    }
     
     return data;
+  }
+
+  /**
+   * @param  {Object} data   Actor data
+   */
+  _prepareCharacterItems(data) {
+    const actorData = data.actor;
+
+    const inventory = {
+      weapons : data.items.filter((item) => { return item.type === "weapon" }),
+      armor : data.items.filter((item) => { return item.type === "armor" }),
+      gear : data.items.filter((item) => { return item.type === "gear" })
+    }
+
+    const talents = data.items.filter((item) => { return item.type === "talent" });
+    const criticals = data.items.filter((item) => { return item.type === "crticial" });
+
+    actorData.inventory = inventory;
   }
 
   /** @override */
@@ -191,7 +212,9 @@ export class swffgActorSheet extends ActorSheet {
     dicePool.renderPreview(rollButton)
   }
 
-
+  /**
+   * @param  {String} s   String value to capitalize
+   */
   _capitalize(s) {
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)

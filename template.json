@@ -248,12 +248,53 @@
     }
   },
   "Item": {
-    "types": ["item"],
+    "types": ["weapon", "gear", "armor", "talent", "critical"],
     "templates": {
       "base": {
         "description": ""
-      }
-    },
+			},
+			"item" : {
+				"price": 0,
+				"rarity": 0,
+				"encumbrance" : 0
+			},
+			"moddable" : {
+				"hardpoints" : 0
+			}
+		},
+		"weapon" : {
+			"templates": ["base", "item", "moddable"],
+			"skill" : "",
+			"damage": {
+				"isCharacteristicBased" : false,
+				"characteristic" : "",
+				"value" : 0
+			},
+			"range": "",
+			"critical" : 0
+		},
+		"armor" : {
+			"templates": ["base", "item", "moddable"],
+			"soak" : 0,
+			"defense" : {
+				"melee" : 0,
+				"ranged" : 0
+			}
+		},
+		"gear" : {
+			"templates": ["base", "item"],
+			"quantity" : 0
+		},
+		"talent" : {
+			"templates": ["base"],
+			"rank" : 0,
+			"isRanked": false,
+			"activation" : ""
+		},
+		"critical" : {
+			"templates": ["base"],
+			"severity" : 0
+		},
     "item": {
       "templates": ["base"],
       "quantity": 1,
