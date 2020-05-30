@@ -437,3 +437,76 @@
   height: 1em;
   border: 0;
 }
+
+.starwars-ffg .biography .row {
+  display: table-row;
+  width: 100%;
+}
+
+.starwars-ffg .biography .row div {
+  display: table-cell;
+}
+
+.starwars-ffg .biography .row input {
+  width: 100%;
+}
+
+.starwars-ffg .biography .features-editor {
+  height: 250px;
+}
+
+.starwars-ffg .biography .box-section {
+  background-color: #b1a9a6;
+  padding: 5px;
+  --notchSize: 9px;
+  -webkit-clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
+  clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
+}
+
+.starwars-ffg .biography .box-section .box-content {
+  background-color: white;
+  padding: 0 5px;
+  --notchSize: 9px;
+  -webkit-clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
+  clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
+}
+
+.starwars-ffg .biography .box-section .box-content .row {
+  margin-top: 5px;
+  position: relative;
+  line-height: 30px;
+}
+
+.starwars-ffg .biography .box-section .box-content .row .row-input {
+  position: absolute;
+  right: 25px;
+}
+
+.starwars-ffg .biography .box-section .box-content .row .row-input input {
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.starwars-ffg .biography .box-section .box-content .row .row-input input:focus {
+  -webkit-box-shadow: 0 0 5px #7da9c2;
+  box-shadow: 0 0 5px #7da9c2;
+  background-color: #7da9c2;
+}
+
+.starwars-ffg .biography .box-section .features-editor {
+  background-color: white;
+  margin-top: 3px;
+  padding: 0 5px;
+  --notchSize: 9px;
+  -webkit-clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
+  clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
+}
+
+.starwars-ffg .biography .box-section .box-title {
+  background-color: #490c0b;
+  color: white;
+  text-align: center;
+  --notchSize: 9px;
+  -webkit-clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
+  clip-path: polygon(0% var(--notchSize), var(--notchSize) 0%, calc(100% - var(--notchSize)) 0%, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0% calc(100% - var(--notchSize)));
+}

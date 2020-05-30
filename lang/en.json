@@ -74,5 +74,12 @@
   "SWFFG.DiceWindowRoll" : "Roll",
   "SWFFG.DiceWindowCancel" : "Cancel",
   "SWFFG.DiceWindowTitle" : "Rolling",
-  "SWFFG.DiceDefaultWindowTitle" : "Finalize your roll"
+  "SWFFG.DiceDefaultWindowTitle" : "Finalize your roll",
+  "SWFFG.DescriptionGender": "Gender",
+  "SWFFG.DescriptionAge": "Age",
+  "SWFFG.DescriptionHeight": "Height",
+  "SWFFG.DescriptionBuild": "Build",
+  "SWFFG.DescriptionHair": "Hair",
+  "SWFFG.DescriptionEyes": "Eyes",
+  "SWFFG.DescriptionBiography" : "Biography and Notable Features"
 }

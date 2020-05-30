@@ -270,8 +270,69 @@
       </div>
     </div>
     
-
     <div class="tab biography" data-group="primary" data-tab="description">
+      <div class="grid grid-2col">
+        <div class="box-section">
+          <div class="box-title"> 
+            {{localize 'SWFFG.DescriptionBiography'}}:
+          </div>
+          <div class="features-editor">
+            {{editor content=data.description.features target="data.description.features" button=true owner=owner editable=editable}}
+          </div>
+        </div>
+        <div class="box-section">
+          <div class="box-content">
+            <div class="row">
+              <div class="row-title">
+                {{localize 'SWFFG.DescriptionGender'}}:
+              </div>
+              <div class="row-input">
+                <input name="data.description.gender" type="text" value="{{data.description.gender}}"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row-title">
+                {{localize 'SWFFG.DescriptionAge'}}:
+              </div>
+              <div class="row-input">
+                <input name="data.description.age" type="text" value="{{data.description.age}}" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="row-title">
+                {{localize 'SWFFG.DescriptionHeight'}}:
+              </div>
+              <div class="row-input">
+                <input name="data.description.height" type="text" value="{{data.description.height}}" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="row-title">
+                {{localize 'SWFFG.DescriptionBuild'}}:
+              </div>
+              <div class="row-input">
+                <input name="data.description.build" type="text" value="{{data.description.build}}" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="row-title">
+                {{localize 'SWFFG.DescriptionHair'}}:
+              </div>
+              <div class="row-input">
+                <input name="data.description.hair" type="text" value="{{data.description.hair}}" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="row-title">
+                {{localize 'SWFFG.DescriptionEyes'}}:
+              </div>
+              <div class="row-input">
+                <input name="data.description.eyes" type="text" value="{{data.description.eyes}}" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="tab items" data-group="primary" data-tab="items">
