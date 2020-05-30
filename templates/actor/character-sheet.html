@@ -4,19 +4,19 @@
   <header class="sheet-header">
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
     <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'SWFFG.Name'}}"/></h1>
       <div class="secondary">
         <div class="row">
-          <div>Species:</div>
-          <div><input name="data.species" type="text" value="{{data.species}}" placeholder="Species"/></div>
+          <div>{{localize "SWFFG.Species"}}:</div>
+          <div><input name="data.species" type="text" value="{{data.species}}" placeholder="{{localize 'SWFFG.Species'}}"/></div>
         </div>
         <div class="row">
-          <div>Career:</div>
-          <div><input name="data.career" type="text" value="{{data.career}}" placeholder="Career"/></div>
+          <div>{{localize "SWFFG.Career"}}:</div>
+          <div><input name="data.career" type="text" value="{{data.career}}" placeholder="{{localize 'SWFFG.Career'}}"/></div>
         </div>
         <div class="row">
-          <div>Specializations: </div>
-          <div><input name="data.specializations" type="text" value="{{data.specializations}}" placeholder="Specializations"/></div>
+          <div>{{localize "SWFFG.Specializations"}}: </div>
+          <div><input name="data.specializations" type="text" value="{{data.specializations}}" placeholder="{{localize 'SWFFG.Specializations'}}"/></div>
         </div>
       </div>
     </div>
@@ -54,26 +54,26 @@
         </div>
         <div class="attribute flex-group-center">
           <div class="shadow-left">
-            <div class="shadow-text">threshold</div>
+            <div class="shadow-text">{{localize "SWFFG.AttributeThreshold"}}</div>
           </div>
           <div class="shadow-right">
-            <div class="shadow-text">current</div>
+            <div class="shadow-text">{{localize "SWFFG.AttributeCurrent"}}</div>
           </div>
         </div>
         <div class="attribute flex-group-center">
           <div class="shadow-left">
-            <div class="shadow-text">threshold</div>
+            <div class="shadow-text">{{localize "SWFFG.AttributeThreshold"}}</div>
           </div>
           <div class="shadow-right">
-            <div class="shadow-text">current</div>
+            <div class="shadow-text">{{localize "SWFFG.AttributeCurrent"}}</div>
           </div>
         </div>
         <div class="attribute flex-group-center">
           <div class="shadow-left">
-            <div class="shadow-text">ranged</div>
+            <div class="shadow-text">{{localize "SWFFG.DefenseRanged"}}</div>
           </div>
           <div class="shadow-right">
-            <div class="shadow-text">melee</div>
+            <div class="shadow-text">{{localize "SWFFG.DefenseMelee"}}</div>
           </div>
         </div>
       </div>
@@ -159,7 +159,7 @@
           <table>
             <thead>
                 <tr>
-                  <th>{{localize "SWFFG.SkillsGeneral" }} Skills</th>
+                  <th>{{localize "SWFFG.SkillsGeneral" }}</th>
                   <th>{{localize "SWFFG.SkillsCareer"}}</th>
                   <th>{{localize "SWFFG.SkillsRank"}}</th>
                   <th>{{localize "SWFFG.SkillsDicePool"}}</th>
@@ -188,7 +188,7 @@
           <table>
             <thead>
                 <tr>
-                  <th>{{localize "SWFFG.SkillsCombat" }} Skills</th>
+                  <th>{{localize "SWFFG.SkillsCombat" }}</th>
                   <th>{{localize "SWFFG.SkillsCareer"}}</th>
                   <th>{{localize "SWFFG.SkillsRank"}}</th>
                   <th>{{localize "SWFFG.SkillsDicePool"}}</th>
@@ -215,7 +215,7 @@
           <table>
             <thead>
                 <tr>
-                  <th>{{localize "SWFFG.SkillsSocial" }} Skills</th>
+                  <th>{{localize "SWFFG.SkillsSocial" }}</th>
                   <th>{{localize "SWFFG.SkillsCareer"}}</th>
                   <th>{{localize "SWFFG.SkillsRank"}}</th>
                   <th>{{localize "SWFFG.SkillsDicePool"}}</th>
@@ -242,7 +242,7 @@
           <table>
             <thead>
                 <tr>
-                  <th>{{localize "SWFFG.SkillsKnowledge" }} Skills</th>
+                  <th>{{localize "SWFFG.SkillsKnowledge" }}</th>
                   <th>{{localize "SWFFG.SkillsCareer"}}</th>
                   <th>{{localize "SWFFG.SkillsRank"}}</th>
                   <th>{{localize "SWFFG.SkillsDicePool"}}</th>
