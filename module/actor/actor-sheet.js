@@ -117,10 +117,10 @@ export class swffgActorSheet extends ActorSheet {
     const characteristic = data.data.characteristics[skill.characteristic];
 
     const dicePool = new DicePoolFFG({
-      ability: characteristic.value,
+      ability: Math.max(characteristic.value, skill.rank),
       difficulty: 2 // Default to average difficulty
     });
-    dicePool.upgrade(skill.value);
+    dicePool.upgrade(Math.min(characteristic.value, skill.rank));
 
     if (upgradeType === "ability") {
       dicePool.upgrade();
@@ -128,14 +128,15 @@ export class swffgActorSheet extends ActorSheet {
       dicePool.upgradeDifficulty()
     }
 
-    await this._completeRoll(dicePool, `Rolling ${skillName}`);
+    await this._completeRoll(dicePool, `Rolling ${skill.label}`, skill.label);
   }
 
   /**
    * @param  {Object} dicePool    Assembled dice pool
-   * @param  {String} description   Roll description
+   * @param  {String} windowTitle   Window Title
+   * @param  {String} chatDescription   Chat Message
    */
-  async _completeRoll(dicePool, description) {
+  async _completeRoll(dicePool, windowTitle, chatDescription) {
     const id = randomID();
 
     const content = await renderTemplate("systems/starwars-ffg/templates/dice/roll-options.html", {
@@ -144,7 +145,7 @@ export class swffgActorSheet extends ActorSheet {
     });
 
     new Dialog({
-      title: description || "Finalize your roll",
+      title: windowTitle || "Finalize your roll",
       content,
       buttons: {
         one: {
@@ -153,11 +154,14 @@ export class swffgActorSheet extends ActorSheet {
           callback: () => {
             const container = document.getElementById(id);
             const finalPool = DicePoolFFG.fromContainer(container);
+            const content = game.specialDiceRoller.starWars.rollFormula(
+              finalPool.renderDiceExpression(), chatDescription,
+            );
 
             ChatMessage.create({
               user: game.user._id,
               speaker: this.getData(),
-              content: `/sw ${finalPool.renderDiceExpression()}`
+              content,
             });
           }
         },
