@@ -11,7 +11,7 @@ export class swffgActorSheet extends ActorSheet {
       template: "systems/starwars-ffg/templates/actor/character-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "characteristics" }]
     });
   }
 
