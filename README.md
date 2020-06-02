@@ -2,6 +2,16 @@
 
 This is an implementation of the [Fantasy Flight Games Star Wars](https://www.fantasyflightgames.com/en/starwarsrpg/) roleplaying system by in [Foundry Virtual Tabletop](https://foundryvtt.com/).
 
+# ----- Status -----
+
+Continued development has moved over to https://github.com/StarWarsFoundryVTT/StarWarsFFG inorder to better facilitate multiple people working on this project.
+
+
+
+
+------------------------
+
+
 # Requirements
 
 This Requires the "Special Dice Roller" Module to Roll the dice and calculate the results. 
